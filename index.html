@@ -11,36 +11,82 @@
     
 </head>
 <body>
-    <h1>Llama a la API</h1>
-    <!-- Como llamo una webAPI? -->
-    <input class="APICALL" type="button" value="DO IT">
-    <script>
-        $(".APICALL").on(
-            "click",function(){
-                $.ajax({
-                    method: 'POST',
-                    url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
-                    contentType: 'application/json',
-                    data: JSON.stringify(
-                        {
-                            "idFlujo":1,
-                            "observacion": "Hola Mundo",
-                            "respuesta": "Aprobado"
+    <body>
+        <h1>Llama a la API</h1>
+        <!-- Como llamo una webAPI? -->
+        <input class="APICALLAprove" type="button" value="Aprobar">
+        <br>
+        <form class="comment">
+            <p>Comentario para rechazar:</p>
+        <textarea class="commentBox" required></textarea>
+        <br>
+        <input type="submit" value="Rechazar" class="APICALLReject">
+        </form>
+        <p id="commentDone"></p>
+        <script>
+            $(
+                function(){
+                    $(".comment").submit(
+                        function(e) {
+                            var value = $(".commentBox").val();
+                            $(".commentDone").text(value);
+                            e.preventDefault();
                         }
-                    ),
-                    headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
-                    success: (data) => {
-                        console.log("Datos enviados a 3ro con exito", data);
-                    },
-                }).done(function () {
-                    console.log("Envio de datos a 3ro completado")
-                }).fail(function (data) {
-                    console.log('llamar a Url Callback fail', data)
-                });
-    
-            }
-        )    
+                    );
+                }
+            );
+            $(".APICALLReject").on(
+                "click",function(){
+                    var value = $(".commentBox").val();
+                    $.ajax({
+                        method: 'POST',
+                        url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
+                        contentType: 'application/json',
+                        data: JSON.stringify(
+                            {
+                                "idFlujo":1,
+                                "observacion": value,
+                                "respuesta": "Rechazado"
+                            }
+                        ),
+                        headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
+                        success: (data) => {
+                            console.log("Datos enviados a 3ro con exito", data);
+                        },
+                    }).done(function () {
+                        console.log("Envio de datos a 3ro completado")
+                    }).fail(function (data) {
+                        console.log('llamar a Url Callback fail', data)
+                    });
         
-        </script>
+                }
+            )
+            $(".APICALLAprove").on(
+                "click",function(){
+                    $.ajax({
+                        method: 'POST',
+                        url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
+                        contentType: 'application/json',
+                        data: JSON.stringify(
+                            {
+                                "idFlujo":1,
+                                "observacion": null,
+                                "respuesta": "Aprobado"
+                            }
+                        ),
+                        headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
+                        success: (data) => {
+                            console.log("Datos enviados a 3ro con exito", data);
+                        },
+                    }).done(function () {
+                        console.log("Envio de datos a 3ro completado")
+                    }).fail(function (data) {
+                        console.log('llamar a Url Callback fail', data)
+                    });
+        
+                }
+            )    
+            
+            </script>
 </body>
 </html>
