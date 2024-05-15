@@ -92,9 +92,10 @@ $(
         contentType: 'application/json',
         headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
         success: (data) => {
-            console.log("Datos enviados a 3ro con exito", data);
+            let message = data[0].idEstado.nombre
+            console.log("Datos enviados a 3ro con exito", data,message);
             $("#commentDone").html(
-                data[0].idEstado.nombre
+                message
             );
         },
     }).done(function () {
