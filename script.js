@@ -13,7 +13,7 @@ function procesarParametrosURL() {
     const PAGE_URL = location.href;
     const tmpParams = PAGE_URL.split("?");
     let parametros;
-    console.log("URL", PAGE_URL, "parametros", parametros);
+    
     if (tmpParams.length > 1) {
         parametros = PAGE_URL.split("?")[1].split("&");
         parametros.forEach(element => {
@@ -21,7 +21,9 @@ function procesarParametrosURL() {
             const valor = element.split("=")[1];
             datosConsulta[llave] = valor
         });
-    } 
+        
+    }
+    console.log("URL", PAGE_URL, "parametros", parametros); 
 }
 $(
     function(){
