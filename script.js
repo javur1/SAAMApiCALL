@@ -86,7 +86,8 @@ $(".APICALLAprove").on(
 
     }
 )    
-$(
+$( ()=> {
+    procesarParametrosURL();
     $.ajax({
         method: 'GET',
         url: 'https://megafysadev.appiancloud.com/suite/webapi/checkFlujoEstado?idFlujo='+datosConsulta["idFlujo"],
@@ -112,5 +113,7 @@ $(
     }).fail(function (data) {
         console.log('llamar a Url Callback fail', data)
     })
+}
+    
 )
 
