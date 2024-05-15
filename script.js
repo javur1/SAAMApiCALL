@@ -25,69 +25,9 @@ function procesarParametrosURL() {
     }
     console.log("URL", PAGE_URL, "parametros", parametros); 
 }
-$(
-    function(){
-        $(".comment").submit(
-            function(e) {
-                var value = $(".commentBox").val();
-                $(".commentDone").text(value);
-                e.preventDefault();
-            }
-        );
-    }
-)
+
  
-$(".APICALLReject").on(
-    "click",function(){
-        var value = $(".commentBox").val();
-        $.ajax({
-            method: 'POST',
-            url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
-            contentType: 'application/json',
-            data: JSON.stringify(
-                {
-                    "idFlujo":datosConsulta["idFlujo"],
-                    "observacion": value,
-                    "respuesta": "Rechazado"
-                }
-            ),
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
-            success: (data) => {
-                console.log("Datos enviados a 3ro con exito", data);
-            },
-        }).done(function () {
-            console.log("Envio de datos a 3ro completado")
-        }).fail(function (data) {
-            console.log('llamar a Url Callback fail', data)
-        });
-
-    }
-)
-$(".APICALLAprove").on(
-    "click",function(){
-        $.ajax({
-            method: 'POST',
-            url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
-            contentType: 'application/json',
-            data: JSON.stringify(
-                {
-                    "idFlujo":datosConsulta["idFlujo"],
-                    "observacion": null,
-                    "respuesta": "Aprobado"
-                }
-            ),
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
-            success: (data) => {
-                console.log("Datos enviados a 3ro con exito", data);
-            },
-        }).done(function () {
-            console.log("Envio de datos a 3ro completado")
-        }).fail(function (data) {
-            console.log('llamar a Url Callback fail', data)
-        });
-
-    }
-)    
+   
 $( ()=> {
     procesarParametrosURL();
     $.ajax({
@@ -115,6 +55,67 @@ $( ()=> {
     }).fail(function (data) {
         console.log('llamar a Url Callback fail', data)
     })
+    $(".APICALLReject").on(
+        "click",function(){
+            var value = $(".commentBox").val();
+            $.ajax({
+                method: 'POST',
+                url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        "idFlujo":datosConsulta["idFlujo"],
+                        "observacion": value,
+                        "respuesta": "Rechazado"
+                    }
+                ),
+                headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
+                success: (data) => {
+                    console.log("Datos enviados a 3ro con exito", data);
+                },
+            }).done(function () {
+                console.log("Envio de datos a 3ro completado")
+            }).fail(function (data) {
+                console.log('llamar a Url Callback fail', data)
+            });
+    
+        }
+    )
+    $(".APICALLAprove").on(
+        "click",function(){
+            $.ajax({
+                method: 'POST',
+                url: 'https://megafysadev.appiancloud.com/suite/webapi/cambiarEstado',
+                contentType: 'application/json',
+                data: JSON.stringify(
+                    {
+                        "idFlujo":datosConsulta["idFlujo"],
+                        "observacion": null,
+                        "respuesta": "Aprobado"
+                    }
+                ),
+                headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
+                success: (data) => {
+                    console.log("Datos enviados a 3ro con exito", data);
+                },
+            }).done(function () {
+                console.log("Envio de datos a 3ro completado")
+            }).fail(function (data) {
+                console.log('llamar a Url Callback fail', data)
+            });
+    
+        }
+    ) 
+    $(
+        function(){
+            $(".comment").submit(
+                function(e) {
+                    var value = $(".commentBox").val();
+                    e.preventDefault();
+                }
+            );
+        }
+    )
 }
     
 )
