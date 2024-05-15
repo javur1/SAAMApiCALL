@@ -93,6 +93,9 @@ $(
         headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
         success: (data) => {
             console.log("Datos enviados a 3ro con exito", data);
+            $("#commentDone").html(
+                data[0].idEstado.nombre
+            );
         },
     }).done(function () {
         console.log("Envio de datos a 3ro completado")
