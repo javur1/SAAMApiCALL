@@ -2,6 +2,7 @@ let datosConsulta = {
     "idFlujo": null,
     "Status": null
 };
+let hideButtons = false;
 function procesarParametrosURL() {
     /*
     const urlParams = new URLSearchParams(window.location.search);
@@ -92,10 +93,15 @@ $(
         contentType: 'application/json',
         headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
         success: (data) => {
-            let message = data[0].idEstado.nombre
-            console.log("Datos enviados a 3ro con exito", data,message);
+            let fechaCambio = data[0].fechaCambio;
+            let etapasTotales = data[0].idEstado.idDocumento.etapasTotales;
+            let etapaActual = data[0].idEstado.etapa;
+            let nombreEstado = data[0].idEstado.nombre;
+            console.log("Datos enviados a 3ro con exito", data,nombreEstado);
+            hideButtons = datosConsulta["Status"] != etapaActual || etapaActual==etapasTotales;
+            if( hideButtons) $("#evaluateFlujo").hide();
             $("#commentDone").html(
-                message
+                "El flujo quedó "+nombreEstado+"al "+fechaCambio
             );
         },
     }).done(function () {
