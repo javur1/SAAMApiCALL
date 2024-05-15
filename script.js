@@ -101,7 +101,10 @@ $(
             hideButtons = datosConsulta["Status"] != etapaActual || etapaActual==etapasTotales;
             if( hideButtons) $("#evaluateFlujo").hide();
             $("#commentDone").html(
-                "El flujo quedó "+nombreEstado+"al "+fechaCambio
+                "Status URL: "+datosConsulta["Status"]+" "+
+                "ETAPA ACTUAL: "+etapaActual+ " "+
+                "ETAPAS TOTALES: "+etapasTotales+" "+
+                "El flujo quedó "+nombreEstado+" al "+fechaCambio
             );
         },
     }).done(function () {
