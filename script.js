@@ -1,6 +1,7 @@
 let datosConsulta = {
     "idFlujo": null,
-    "Status": null
+    "Status": null,
+    "selected":null
 };
 let hideButtons = false;
 function procesarParametrosURL() {
@@ -42,7 +43,16 @@ $( ()=> {
             let nombreEstado = data[0].idEstado.nombre;
             console.log("Datos enviados a 3ro con exito", data,nombreEstado);
             hideButtons = datosConsulta["Status"] != etapaActual || etapaActual==etapasTotales;
+            if(datosConsulta["selected"]== "A") {
+                $("#rjt").hide();
+            } else if (datosConsulta["selected"]== "R") {
+                $("#apr").hide();
+            } else {
+                $("#rjt").hide();
+                $("#apr").hide();
+            }
             if( hideButtons) $("#evaluateFlujo").hide();
+
             $("#commentDone").html(
                 "Status URL: "+datosConsulta["Status"]+" "+
                 "ETAPA ACTUAL: "+etapaActual+ " "+

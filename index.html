@@ -15,19 +15,24 @@
     <body>
         
         <h1>Evalua el flujo</h1>
-        <!-- Como llamo una webAPI? -->
+        <p id="commentDone"></p>
+        
         <div id="evaluateFlujo">
-            <input class="APICALLAprove" type="button" value="Aprobar">
-        <br>
-        <form class="comment">
-            <p>Comentario para rechazar:</p>
-        <textarea class="commentBox" required></textarea>
-        <br>
-        <input type="submit" value="Rechazar" class="APICALLReject">
-        </form>
+            <div id="apr">
+                <input class="APICALLAprove" type="button" value="Aprobar">
+            </div>
+            <br>
+            <div id="rjt">
+                <form class="comment">
+                    <p>Comentario para rechazar:</p>
+                <textarea class="commentBox" required></textarea>
+                <br>
+                <input type="submit" value="Rechazar" class="APICALLReject">
+                </form>
+            </div>
         </div>
         
-        <p id="commentDone"></p>
+        
         <script src="script.js"></script> 
 </body>
 </html>
