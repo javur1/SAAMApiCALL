@@ -39,6 +39,7 @@ $( ()=> {
         success: (data) => {
             let fechaCambio = data[0].fechaCambio;
             /*extrayendo componentes de fecha*/
+            console.log(fechaCambio);
             let year = fechaCambio.getUTCFullYear();
             let month = fechaCambio.toLocaleString('es-ES', { month: 'long' });
             let day = fechaCambio.getUTCDate();
