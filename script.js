@@ -37,14 +37,14 @@ $( ()=> {
         contentType: 'application/json',
         headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
         success: (data) => {
-            let fechaCambio = Date(data[0].fechaCambio);
+            let fechaCambio = data[0].fechaCambio;
             /*extrayendo componentes de fecha*/
-            var year = fechaCambio.getUTCFullYear();
-            var month = fechaCambio.toLocaleString('es-ES', { month: 'long' });
-            var day = fechaCambio.getUTCDate();
-            var hours = fechaCambio.getUTCHours().toString().padStart(2, '0');
-            var minutes = fechaCambio.getUTCMinutes().toString().padStart(2, '0');
-            var seconds = fechaCambio.getUTCSeconds().toString().padStart(2, '0');
+            let year = fechaCambio.getUTCFullYear();
+            let month = fechaCambio.toLocaleString('es-ES', { month: 'long' });
+            let day = fechaCambio.getUTCDate();
+            let hours = fechaCambio.getUTCHours().toString().padStart(2, '0');
+            let minutes = fechaCambio.getUTCMinutes().toString().padStart(2, '0');
+            let seconds = fechaCambio.getUTCSeconds().toString().padStart(2, '0');
 
             let etapasTotales = data[0].idEstado.idDocumento.etapasTotales;
             let etapaActual = data[0].idEstado.etapa;
