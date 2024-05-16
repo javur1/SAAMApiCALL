@@ -38,14 +38,7 @@ $( ()=> {
         headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MWY0Mjk2Ni00NDMzLTI0YmItMDIzOS1mMTQ2ZGU5NGRlYWEifQ.lbT1VE3ktt5qBSg-kLTXBQt0h9uzJtwGsNfZOJhZ6Vg'},
         success: (data) => {
             let fechaCambio = data[0].fechaCambio;
-            /*extrayendo componentes de fecha*/
-            console.log(fechaCambio);
-            let year = fechaCambio.getUTCFullYear();
-            let month = fechaCambio.toLocaleString('es-ES', { month: 'long' });
-            let day = fechaCambio.getUTCDate();
-            let hours = fechaCambio.getUTCHours().toString().padStart(2, '0');
-            let minutes = fechaCambio.getUTCMinutes().toString().padStart(2, '0');
-            let seconds = fechaCambio.getUTCSeconds().toString().padStart(2, '0');
+            
 
             let etapasTotales = data[0].idEstado.idDocumento.etapasTotales;
             let etapaActual = data[0].idEstado.etapa;
@@ -66,7 +59,7 @@ $( ()=> {
                 "Status URL: "+datosConsulta["Status"]+" <br>"+
                 "ETAPA ACTUAL: "+etapaActual+ " "+" <br>"+
                 "ETAPAS TOTALES: "+etapasTotales+" "+" <br>"+
-                "El flujo quedó "+nombreEstado+" al "+" " + day + " de " + month + " de " + year + " a las " + hours + ":" + minutes + ":" + seconds
+                "El flujo quedó "+nombreEstado+" al "+fechaCambio
             );
         },
     }).done(function () {
